@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jackson Supplies provides dependable building materials, tools, and service for contractors and homeowners.">
+  <title>Jackson Supplies | Building Materials & Tools</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --tan: #d2b48c;
+      --cream: #f8f4ee;
+      --brown: #704f37;
+      --dark: #221912;
+      --gold: #c6a56b;
+      --white: #ffffff;
+      --muted: #71685f;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(34, 25, 18, .96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .navbar {
+      max-width: 1400px;
+      margin: auto;
+      padding: 14px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-circle {
+      width: 54px;
+      height: 54px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 21px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      color: white;
+      font-family: 'Cinzel', serif;
+    }
+
+    .logo-text h2 {
+      font-size: 19px;
+      letter-spacing: 2px;
+    }
+
+    .logo-text span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--tan);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--gold);
+    }
+
+    .nav-links .nav-cta {
+      border: 1px solid var(--gold);
+      padding: 10px 16px;
+      color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid rgba(255, 255, 255, .35);
+      background: transparent;
+      color: white;
+      padding: 8px 11px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 720px;
+      height: 100vh;
+      max-height: 950px;
+      background:
+        linear-gradient(rgba(0, 0, 0, .58), rgba(0, 0, 0, .62)),
+        url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=85");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 50px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      color: white;
+    }
+
+    .hero-small {
+      color: var(--gold);
+      letter-spacing: 5px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.12;
+      font-family: 'Cinzel', serif;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 32px;
+      color: rgba(255, 255, 255, .88);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 24px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: transparent;
+      color: white;
+    }
+
+    .button-outline {
+      margin-left: 10px;
+      background: transparent;
+      color: white;
+    }
+
+    .button-outline:hover,
+    .button-outline:focus-visible {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--brown);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      font: 700 clamp(30px, 4vw, 44px)/1.2 'Cinzel', serif;
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid rgba(112, 79, 55, .12);
+      padding: 0;
+      min-height: 230px;
+      transition: transform .2s ease, box-shadow .2s ease;
+      overflow: hidden;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 35px rgba(34, 25, 18, .09);
+    }
+
+    .product-card img {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .product-card-content {
+      padding: 24px;
+    }
+
+    .product-number {
+      color: var(--gold);
+      font: 700 14px 'Cinzel', serif;
+      letter-spacing: 2px;
+    }
+
+    .product-card h3 {
+      margin: 18px 0 10px;
+      font: 700 21px 'Cinzel', serif;
+    }
+
+    .product-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .about {
+      background: #efe7dc;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-image {
+      min-height: 420px;
+      background:
+        linear-gradient(rgba(34, 25, 18, .08), rgba(34, 25, 18, .08)),
+        url("https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=85");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .about-copy .eyebrow {
+      text-align: left;
+    }
+
+    .about-copy h2 {
+      font: 700 clamp(30px, 4vw, 43px)/1.2 'Cinzel', serif;
+      margin-bottom: 20px;
+    }
+
+    .about-copy p {
+      margin-bottom: 16px;
+      color: #5f574f;
+      line-height: 1.8;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .value {
+      border-left: 3px solid var(--gold);
+      padding: 8px 0 8px 13px;
+      font-weight: 600;
+    }
+
+    .value span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 28px;
+      border-top: 2px solid var(--gold);
+      background: white;
+    }
+
+    .service-card h3 {
+      margin-bottom: 12px;
+      font: 700 20px 'Cinzel', serif;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    .contact {
+      background: var(--dark);
+      color: white;
+    }
+
+    .contact .section-heading p {
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .contact .eyebrow {
+      color: var(--gold);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      margin-bottom: 16px;
+      font: 700 24px 'Cinzel', serif;
+    }
+
+    .contact-info p {
+      color: rgba(255, 255, 255, .72);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .contact-info a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .8);
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, .2);
+      background: rgba(255, 255, 255, .06);
+      color: white;
+      padding: 12px;
+      font: inherit;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    .contact-form button {
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .form-message {
+      grid-column: 1 / -1;
+      color: var(--gold);
+      min-height: 1.5em;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #17110d;
+      color: rgba(255, 255, 255, .65);
+      padding: 22px 5%;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: rgba(34, 25, 18, .98);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 650px;
+      }
+
+      .products-grid,
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        min-height: 340px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .logo-circle {
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+      }
+
+      .logo-text h2 {
+        font-size: 16px;
+      }
+
+      .logo-text span {
+        font-size: 9px;
+        letter-spacing: 2px;
+      }
+
+      .hero {
+        min-height: 620px;
+      }
+
+      .hero-small {
+        letter-spacing: 3px;
+        font-size: 11px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .button {
+        display: block;
+        width: fit-content;
+        margin: 10px auto;
+      }
+
+      .button-outline {
+        margin-left: auto;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .products-grid,
+      .services-grid,
+      .values,
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+
+      .form-field.full {
+        grid-column: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Jackson Supplies home">
+        <div class="logo-circle" aria-hidden="true">JS</div>
+        <div class="logo-text">
+          <h2>JACKSON</h2>
+          <span>SUPPLIES</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        Menu
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a class="nav-cta" href="#contact">Contact Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-small">QUALITY • SERVICE • VALUE</div>
+        <h1>Building Better,<br>Together.</h1>
+        <p>
+          Dependable materials, trusted tools, and knowledgeable service
+          for every project—from the first sketch to the finishing touches.
+        </p>
+        <a class="button" href="#products">Explore Our Products</a>
+        <a class="button button-outline" href="#contact">Get In Touch</a>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Shop Our Collection</span>
+          <h2>Featured Items</h2>
+          <p>Explore a selection of quality products for your style, vehicle, and outdoor adventures.</p>
+        </div>
+
+        <div class="products-grid">
+          <article class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=85"
+              alt="Luxury jewelry and accessories"
+              loading="lazy"
+            >
+            <div class="product-card-content">
+              <span class="product-number">01 / LUXURY</span>
+              <h3>Luxury Items</h3>
+              <p>Discover standout accessories and special pieces for your collection.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=85"
+              alt="Automotive parts in a workshop"
+              loading="lazy"
+            >
+            <div class="product-card-content">
+              <span class="product-number">02 / AUTOMOTIVE</span>
+              <h3>Car Parts</h3>
+              <p>Find automotive parts and accessories for your vehicle.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85"
+              alt="Fashionable designer clothing"
+              loading="lazy"
+            >
+            <div class="product-card-content">
+              <span class="product-number">03 / FASHION</span>
+              <h3>Designer Clothes</h3>
+              <p>Shop fashionable clothing and fresh looks for every occasion.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=85"
+              alt="Cologne bottles"
+              loading="lazy"
+            >
+            <div class="product-card-content">
+              <span class="product-number">04 / FRAGRANCE</span>
+              <h3>Cologne</h3>
+              <p>Explore fragrances to suit your style, whether for daily wear or a special occasion.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1551524164-687a55dd1126?auto=format&fit=crop&w=900&q=85"
+              alt="Winter clothing for snow sports"
+              loading="lazy"
+            >
+            <div class="product-card-content">
+              <span class="product-number">05 / WINTER GEAR</span>
+              <h3>Snow Pants</h3>
+              <p>Get ready for cold-weather adventures with winter gear and snow pants.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-layout">
+        <div class="about-image" role="img" aria-label="Craftsperson working on a building project"></div>
+
+        <div class="about-copy">
+          <span class="eyebrow">Built on Trust</span>
+          <h2>A Better Way to Build</h2>
+          <p>
+            At Jackson Supplies, we believe good work starts with good
+            materials—and people you can count on. We’re here to make
+            sourcing supplies straightforward, with helpful service at
+            every step.
+          </p>
+          <p>
+            Whether you’re a contractor planning a busy season or a
+            homeowner tackling a weekend project, we’re ready to help you
+            get moving.
+          </p>
+
+          <div class="values">
+            <div class="value">Reliable Products<span>Quality essentials for the job.</span></div>
+            <div class="value">Helpful People<span>Real support when you need it.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Here to Help</span>
+          <h2>More Than a Supply Store</h2>
+          <p>
+            Count on a friendly team to help you plan, source, and get your
+            materials where they need to be.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <h3>Project Guidance</h3>
+            <p>Talk through your project and get help identifying the supplies and materials you may need.</p>
+          </article>
+
+          <article class="service-card">
+            <h3>Material Planning</h3>
+            <p>We can help organize your list and coordinate materials around your project timeline.</p>
+          </article>
+
+          <article class="service-card">
+            <h3>Local Support</h3>
+            <p>Get in touch with our team for product questions, availability, and order assistance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Let’s Get Started</span>
+          <h2>Tell Us About Your Project</h2>
+          <p>Have a question or need help finding supplies? Send us a message.</p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-info">
+            <h3>Jackson Supplies</h3>
+            <p>
+              Contact our team for product questions, project support, or
+              help with an order. Add your business address and phone number
+              here before publishing.
+            </p>
+            <p><a href="mailto:info@jacksonsupplies.example">info@jacksonsupplies.example</a></p>
+            <p>Business hours: Please contact us for current hours.</p>
+          </div>
+
+          <form class="contact-form" id="contact-form">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+
+            <div class="form-field full">
+              <label for="subject">What do you need help with?</label>
+              <input id="subject" name="subject" type="text" required>
+            </div>
+
+            <div class="form-field full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button class="button" type="submit">Send Message</button>
+            <p class="form-message" id="form-message" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Jackson Supplies. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contact-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      document.getElementById('form-message').textContent =
+        'Thanks for reaching out! Connect this form to an email or form service to receive messages.';
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>
